@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Calendar, 
-  Video, 
-  Pill, 
-  FileText, 
-  Activity, 
-  Bell, 
-  Menu, 
-  Home, 
-  User, 
-  Search, 
-  MapPin, 
-  ChevronRight, 
-  Clock, 
+import {
+  Calendar,
+  Video,
+  Pill,
+  FileText,
+  Activity,
+  Bell,
+  Menu,
+  Home,
+  User,
+  Search,
+  MapPin,
+  ChevronRight,
+  Clock,
   Stethoscope,
   Ambulance,
   TestTube,
@@ -104,41 +104,41 @@ const MY_LAB_REPORTS = [
 ];
 
 const NEWS = [
-  { 
-    id: 1, 
-    category: "Medical Camps", 
-    title: "Free Cardiac Health Camp", 
-    date: "15 Feb 2026", 
+  {
+    id: 1,
+    category: "Medical Camps",
+    title: "Free Cardiac Health Camp",
+    date: "15 Feb 2026",
     desc: "Join us for a free heart checkup including ECG and consultation at Jayanagar branch.",
     image: "bg-red-100",
     icon: HeartPulse,
     iconColor: "text-red-600"
   },
-  { 
-    id: 2, 
-    category: "Announcements", 
-    title: "New 3T MRI Facility", 
-    date: "10 Feb 2026", 
+  {
+    id: 2,
+    category: "Announcements",
+    title: "New 3T MRI Facility",
+    date: "10 Feb 2026",
     desc: "Sagar Hospital introduces state-of-the-art 3 Tesla MRI scanning available 24/7.",
     image: "bg-purple-100",
     icon: Megaphone,
     iconColor: "text-purple-600"
   },
-  { 
-    id: 3, 
-    category: "Campaigns", 
-    title: "Monsoon Flu Awareness", 
-    date: "01 Jun 2026", 
+  {
+    id: 3,
+    category: "Campaigns",
+    title: "Monsoon Flu Awareness",
+    date: "01 Jun 2026",
     desc: "Protect your family. Learn about symptoms and prevention of seasonal flu.",
     image: "bg-blue-100",
     icon: Info,
     iconColor: "text-blue-600"
   },
-  { 
-    id: 4, 
-    category: "CSR", 
-    title: "Rural Health Outreach", 
-    date: "05 Feb 2026", 
+  {
+    id: 4,
+    category: "CSR",
+    title: "Rural Health Outreach",
+    date: "05 Feb 2026",
     desc: "Providing free medicines and checkups to over 500 families in Kanakapura village.",
     image: "bg-green-100",
     icon: HeartHandshake,
@@ -211,7 +211,7 @@ const Button = ({ children, onClick, className = "", variant = "primary", icon: 
     outline: "border-2 border-blue-600 text-blue-600 bg-transparent",
     success: "bg-green-600 text-white shadow-lg shadow-green-200 hover:bg-green-700"
   };
-  
+
   return (
     <button disabled={disabled} onClick={onClick} className={`${baseStyle} ${variants[variant]} ${className} py-3 px-4`}>
       {Icon && <Icon size={18} className="mr-2" />}
@@ -251,7 +251,7 @@ const LoginScreen = ({ navigate, setMobileNumber }) => {
       setError('Please enter a valid 10-digit mobile number');
       return;
     }
-    setMobileNumber(mobile || 'Guest'); 
+    setMobileNumber(mobile || 'Guest');
     navigate('otp');
   };
 
@@ -269,8 +269,8 @@ const LoginScreen = ({ navigate, setMobileNumber }) => {
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">Mobile Number</label>
             <div className="flex items-center gap-3 border-b-2 border-gray-100 py-3 mt-1 transition-colors focus-within:border-blue-600">
               <span className="text-gray-900 font-bold text-lg">+91</span>
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 value={mobile}
                 onChange={(e) => {
                   const val = e.target.value.replace(/\D/g, '').slice(0, 10);
@@ -281,14 +281,14 @@ const LoginScreen = ({ navigate, setMobileNumber }) => {
                 placeholder="00000 00000"
               />
             </div>
-            {error && <p className="text-xs text-red-500 mt-2 font-medium flex items-center gap-1"><AlertCircle size={12}/> {error}</p>}
+            {error && <p className="text-xs text-red-500 mt-2 font-medium flex items-center gap-1"><AlertCircle size={12} /> {error}</p>}
           </div>
 
           <Button onClick={handleSendOtp} className="w-full mt-4 h-14 text-lg shadow-blue-200">
             Get OTP
           </Button>
-          <button 
-            onClick={() => navigate('home')} 
+          <button
+            onClick={() => navigate('home')}
             className="w-full mt-4 py-2 text-sm font-bold text-gray-500 hover:text-gray-800 transition-colors"
           >
             Skip for now
@@ -311,7 +311,7 @@ const OtpScreen = ({ navigate, mobileNumber }) => {
     const newOtp = [...otp];
     newOtp[index] = val;
     setOtp(newOtp);
-    
+
     // Focus next
     if (val && index < 3) {
       inputs.current[index + 1].focus();
@@ -333,14 +333,14 @@ const OtpScreen = ({ navigate, mobileNumber }) => {
       <button onClick={() => navigate('login')} className="self-start p-2 -ml-2 rounded-full hover:bg-gray-100 text-gray-600 mb-8 transition-colors">
         <ArrowLeft size={24} />
       </button>
-      
+
       <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-blue-600">
         <Lock size={28} />
       </div>
 
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Verification</h1>
       <p className="text-gray-500 mb-8 text-sm leading-relaxed">
-        Enter the 4-digit code we just sent to <br/>
+        Enter the 4-digit code we just sent to <br />
         <span className="text-gray-900 font-bold text-base">+91 {mobileNumber}</span>
       </p>
 
@@ -362,8 +362,8 @@ const OtpScreen = ({ navigate, mobileNumber }) => {
       <Button onClick={handleVerify} className="h-14 text-lg">
         Verify & Login
       </Button>
-      <button 
-        onClick={() => navigate('home')} 
+      <button
+        onClick={() => navigate('home')}
         className="w-full mt-4 py-2 text-sm font-bold text-gray-500 hover:text-gray-800 transition-colors"
       >
         Skip Verification
@@ -387,7 +387,7 @@ const NewsScreen = ({ navigate }) => {
     <div className="h-full flex flex-col bg-gray-50">
       <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
         <button onClick={() => navigate('home')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
-            <ArrowLeft size={24} />
+          <ArrowLeft size={24} />
         </button>
         <div>
           <h2 className="text-xl font-bold">News & Events</h2>
@@ -426,9 +426,9 @@ const NewsScreen = ({ navigate }) => {
               </div>
             </div>
             <div className="mt-3 flex gap-2 border-t border-gray-50 pt-3 justify-end">
-               <button className="text-xs font-bold text-blue-600 flex items-center gap-1">
-                 Read More <ChevronRight size={14} />
-               </button>
+              <button className="text-xs font-bold text-blue-600 flex items-center gap-1">
+                Read More <ChevronRight size={14} />
+              </button>
             </div>
           </div>
         ))}
@@ -440,68 +440,68 @@ const NewsScreen = ({ navigate }) => {
 const ProfileScreen = ({ navigate }) => {
   return (
     <div className="h-full flex flex-col bg-gray-50 pb-24">
-       {/* Header */}
-       <div className="p-6 pt-14 pb-8 bg-blue-600 text-white rounded-b-[2.5rem] relative z-10 shadow-lg">
-          <div className="flex items-center gap-4">
-             <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-sm border-2 border-white/30 overflow-hidden">
-               <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" className="w-full h-full object-cover" />
-             </div>
-             <div>
-               <h2 className="text-xl font-bold">Rahul Sharma</h2>
-               <p className="text-blue-100 text-sm">+91 98765 43210</p>
-               <p className="text-blue-200 text-xs mt-1 font-mono bg-blue-700/30 px-2 py-0.5 rounded inline-block">UHID: SH-2026-8899</p>
-             </div>
+      {/* Header */}
+      <div className="p-6 pt-14 pb-8 bg-blue-600 text-white rounded-b-[2.5rem] relative z-10 shadow-lg">
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-sm border-2 border-white/30 overflow-hidden">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" className="w-full h-full object-cover" />
           </div>
-       </div>
+          <div>
+            <h2 className="text-xl font-bold">Rahul Sharma</h2>
+            <p className="text-blue-100 text-sm">+91 98765 43210</p>
+            <p className="text-blue-200 text-xs mt-1 font-mono bg-blue-700/30 px-2 py-0.5 rounded inline-block">UHID: SH-2026-8899</p>
+          </div>
+        </div>
+      </div>
 
-       {/* Menu Items */}
-       <div className="flex-1 overflow-y-auto p-6 -mt-4 relative z-20 scrollbar-hide">
-         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2 mb-4">
-            {/* Removed My Appointments from here */}
-            <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
-              <div className="bg-purple-50 text-purple-600 p-2 rounded-lg"><Users size={20} /></div>
-              <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Family Members</h4><p className="text-xs text-gray-400">Manage dependents</p></div>
-              <ChevronRight size={16} className="text-gray-300" />
-            </div>
-            <div className="flex items-center gap-3 p-4 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
-              <div className="bg-red-50 text-red-600 p-2 rounded-lg"><HeartPulse size={20} /></div>
-              <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Health Vitals</h4><p className="text-xs text-gray-400">Track BP, Sugar, etc.</p></div>
-              <ChevronRight size={16} className="text-gray-300" />
-            </div>
-         </div>
+      {/* Menu Items */}
+      <div className="flex-1 overflow-y-auto p-6 -mt-4 relative z-20 scrollbar-hide">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2 mb-4">
+          {/* Removed My Appointments from here */}
+          <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
+            <div className="bg-purple-50 text-purple-600 p-2 rounded-lg"><Users size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Family Members</h4><p className="text-xs text-gray-400">Manage dependents</p></div>
+            <ChevronRight size={16} className="text-gray-300" />
+          </div>
+          <div className="flex items-center gap-3 p-4 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
+            <div className="bg-red-50 text-red-600 p-2 rounded-lg"><HeartPulse size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Health Vitals</h4><p className="text-xs text-gray-400">Track BP, Sugar, etc.</p></div>
+            <ChevronRight size={16} className="text-gray-300" />
+          </div>
+        </div>
 
-         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2 mb-4">
-             <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
-               <div className="bg-orange-50 text-orange-600 p-2 rounded-lg"><MapPin size={20} /></div>
-               <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Saved Addresses</h4><p className="text-xs text-gray-400">For medicine delivery</p></div>
-               <ChevronRight size={16} className="text-gray-300" />
-             </div>
-             <div className="flex items-center gap-3 p-4 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
-               <div className="bg-gray-100 text-gray-600 p-2 rounded-lg"><Settings size={20} /></div>
-               <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Settings</h4><p className="text-xs text-gray-400">App preferences</p></div>
-               <ChevronRight size={16} className="text-gray-300" />
-             </div>
-         </div>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2 mb-4">
+          <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
+            <div className="bg-orange-50 text-orange-600 p-2 rounded-lg"><MapPin size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Saved Addresses</h4><p className="text-xs text-gray-400">For medicine delivery</p></div>
+            <ChevronRight size={16} className="text-gray-300" />
+          </div>
+          <div className="flex items-center gap-3 p-4 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
+            <div className="bg-gray-100 text-gray-600 p-2 rounded-lg"><Settings size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Settings</h4><p className="text-xs text-gray-400">App preferences</p></div>
+            <ChevronRight size={16} className="text-gray-300" />
+          </div>
+        </div>
 
-         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2">
-             <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
-               <div className="bg-green-50 text-green-600 p-2 rounded-lg"><HelpCircle size={20} /></div>
-               <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Help & Support</h4><p className="text-xs text-gray-400">FAQs & Contact Us</p></div>
-             </div>
-             <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
-               <div className="bg-indigo-50 text-indigo-600 p-2 rounded-lg"><Shield size={20} /></div>
-               <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Privacy Policy</h4><p className="text-xs text-gray-400">Terms of use</p></div>
-             </div>
-             <div onClick={() => navigate('login')} className="flex items-center gap-3 p-4 cursor-pointer active:bg-red-50 rounded-xl transition-colors group">
-               <div className="bg-red-50 text-red-600 p-2 rounded-lg group-hover:bg-red-100"><LogOut size={20} /></div>
-               <div className="flex-1"><h4 className="text-sm font-bold text-red-600">Logout</h4></div>
-             </div>
-         </div>
-         
-         <div className="text-center mt-6 mb-4">
-            <p className="text-[10px] text-gray-400">Sagar Hospital App v1.0.2</p>
-         </div>
-       </div>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2">
+          <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
+            <div className="bg-green-50 text-green-600 p-2 rounded-lg"><HelpCircle size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Help & Support</h4><p className="text-xs text-gray-400">FAQs & Contact Us</p></div>
+          </div>
+          <div className="flex items-center gap-3 p-4 border-b border-gray-50 cursor-pointer active:bg-gray-50 rounded-xl transition-colors">
+            <div className="bg-indigo-50 text-indigo-600 p-2 rounded-lg"><Shield size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-gray-800">Privacy Policy</h4><p className="text-xs text-gray-400">Terms of use</p></div>
+          </div>
+          <div onClick={() => navigate('login')} className="flex items-center gap-3 p-4 cursor-pointer active:bg-red-50 rounded-xl transition-colors group">
+            <div className="bg-red-50 text-red-600 p-2 rounded-lg group-hover:bg-red-100"><LogOut size={20} /></div>
+            <div className="flex-1"><h4 className="text-sm font-bold text-red-600">Logout</h4></div>
+          </div>
+        </div>
+
+        <div className="text-center mt-6 mb-4">
+          <p className="text-[10px] text-gray-400">Sagar Hospital App v1.0.2</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -520,21 +520,21 @@ const BillsScreen = ({ navigate, bills, onPayBill }) => {
         <h3 className="font-bold text-gray-800 mb-3 text-sm">Pending Bills</h3>
         <div className="space-y-3 mb-6">
           {bills.filter(b => b.status === 'Pending').length > 0 ? (
-             bills.filter(b => b.status === 'Pending').map(bill => (
-               <div key={bill.id} className="bg-white p-4 rounded-xl shadow-sm border border-orange-100">
-                  <div className="flex justify-between items-start mb-2">
-                     <div>
-                        <h4 className="font-bold text-sm text-gray-800">{bill.title}</h4>
-                        <p className="text-[10px] text-gray-500">{bill.date} • {bill.id}</p>
-                     </div>
-                     <span className="bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded">Unpaid</span>
+            bills.filter(b => b.status === 'Pending').map(bill => (
+              <div key={bill.id} className="bg-white p-4 rounded-xl shadow-sm border border-orange-100">
+                <div className="flex justify-between items-start mb-2">
+                  <div>
+                    <h4 className="font-bold text-sm text-gray-800">{bill.title}</h4>
+                    <p className="text-[10px] text-gray-500">{bill.date} • {bill.id}</p>
                   </div>
-                  <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-50">
-                     <span className="font-bold text-lg text-gray-800">₹{bill.amount}</span>
-                     <button onClick={() => onPayBill(bill)} className="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-blue-200">Pay Now</button>
-                  </div>
-               </div>
-             ))
+                  <span className="bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded">Unpaid</span>
+                </div>
+                <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-50">
+                  <span className="font-bold text-lg text-gray-800">₹{bill.amount}</span>
+                  <button onClick={() => onPayBill(bill)} className="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-blue-200">Pay Now</button>
+                </div>
+              </div>
+            ))
           ) : (
             <div className="text-center py-8 bg-white rounded-xl border border-dashed border-gray-200">
               <p className="text-gray-400 text-xs">No pending bills</p>
@@ -545,20 +545,20 @@ const BillsScreen = ({ navigate, bills, onPayBill }) => {
         <h3 className="font-bold text-gray-800 mb-3 text-sm">Payment History</h3>
         <div className="space-y-3 pb-24">
           {bills.filter(b => b.status === 'Paid').map(bill => (
-               <div key={bill.id} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                     <div className="bg-green-50 text-green-600 p-2 rounded-lg"><Receipt size={20} /></div>
-                     <div>
-                        <h4 className="font-bold text-sm text-gray-800 line-clamp-1">{bill.title}</h4>
-                        <p className="text-[10px] text-gray-500">{bill.date}</p>
-                     </div>
-                  </div>
-                  <div className="text-right">
-                     <p className="font-bold text-sm text-gray-800">₹{bill.amount}</p>
-                     <p className="text-[10px] text-green-600 font-bold">Paid</p>
-                  </div>
-               </div>
-           ))}
+            <div key={bill.id} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="bg-green-50 text-green-600 p-2 rounded-lg"><Receipt size={20} /></div>
+                <div>
+                  <h4 className="font-bold text-sm text-gray-800 line-clamp-1">{bill.title}</h4>
+                  <p className="text-[10px] text-gray-500">{bill.date}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="font-bold text-sm text-gray-800">₹{bill.amount}</p>
+                <p className="text-[10px] text-green-600 font-bold">Paid</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -572,13 +572,13 @@ const AppointmentsScreen = ({ navigate, upcomingAppt }) => {
       <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10">
         <h2 className="text-2xl font-bold">My Appointments</h2>
         <div className="bg-gray-100 p-1 rounded-xl flex text-sm font-bold mt-4">
-          <button 
+          <button
             onClick={() => setTab('upcoming')}
             className={`flex-1 py-2 rounded-lg transition-all ${tab === 'upcoming' ? 'bg-white shadow text-blue-600' : 'text-gray-500'}`}
           >
             Upcoming
           </button>
-          <button 
+          <button
             onClick={() => setTab('completed')}
             className={`flex-1 py-2 rounded-lg transition-all ${tab === 'completed' ? 'bg-white shadow text-blue-600' : 'text-gray-500'}`}
           >
@@ -630,16 +630,16 @@ const AppointmentsScreen = ({ navigate, upcomingAppt }) => {
             {CONSULTATIONS.map((consult) => (
               <div key={consult.id} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
                 <div className="flex justify-between items-start mb-3">
-                   <div className="flex gap-3">
-                      <div className={`p-2 rounded-xl ${consult.type === 'VIDEO' ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
-                        {consult.type === 'VIDEO' ? <Video size={16} /> : <Stethoscope size={16} />}
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-gray-800 text-sm">{consult.doctor}</h4>
-                        <p className="text-[10px] text-gray-500">{consult.dept}</p>
-                      </div>
-                   </div>
-                   <span className="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded">Completed</span>
+                  <div className="flex gap-3">
+                    <div className={`p-2 rounded-xl ${consult.type === 'VIDEO' ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
+                      {consult.type === 'VIDEO' ? <Video size={16} /> : <Stethoscope size={16} />}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-800 text-sm">{consult.doctor}</h4>
+                      <p className="text-[10px] text-gray-500">{consult.dept}</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded">Completed</span>
                 </div>
                 <div className="flex gap-4 text-xs text-gray-500 border-t border-gray-50 pt-3">
                   <span className="flex items-center gap-1"><Calendar size={12} /> {consult.date}</span>
@@ -664,13 +664,13 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
           <h2 className="text-2xl font-bold">Rahul Sharma</h2>
         </div>
         <div className="flex gap-3 items-center">
-          <button 
-            onClick={() => navigate('ambulance')} 
+          <button
+            onClick={() => navigate('ambulance')}
             className="px-3 py-1.5 bg-red-500 hover:bg-red-600 rounded-full backdrop-blur-sm flex items-center gap-1 text-white font-bold text-xs shadow-lg shadow-red-500/30 transition-colors"
           >
             <Ambulance size={14} /> SOS
           </button>
-          <button 
+          <button
             onClick={() => navigate('notifications')}
             className="p-2 bg-blue-500/50 rounded-full backdrop-blur-sm relative transition-transform active:scale-95"
           >
@@ -679,7 +679,7 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
           </button>
         </div>
       </div>
-      
+
       <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 flex items-center gap-3">
         <MapPin size={18} className="text-blue-200" />
         <span className="text-sm font-medium">Sagar Hospital, Jayanagar</span>
@@ -716,8 +716,8 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
             <Package size={24} />
           </div>
           <div className="flex-1">
-             <p className="text-xs text-emerald-100 font-medium">Pharmacy Order</p>
-             <p className="font-bold text-sm">Out for Delivery</p>
+            <p className="text-xs text-emerald-100 font-medium">Pharmacy Order</p>
+            <p className="font-bold text-sm">Out for Delivery</p>
           </div>
           <ChevronRight size={20} className="text-emerald-200" />
         </div>
@@ -728,8 +728,8 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
             <FlaskConical size={24} />
           </div>
           <div className="flex-1">
-             <p className="text-xs text-purple-100 font-medium">Lab Report</p>
-             <p className="font-bold text-sm">Processing...</p>
+            <p className="text-xs text-purple-100 font-medium">Lab Report</p>
+            <p className="font-bold text-sm">Processing...</p>
           </div>
           <ChevronRight size={20} className="text-purple-200" />
         </div>
@@ -742,7 +742,7 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
         <h3 className="text-lg font-bold text-gray-800">My Appointments</h3>
         {upcomingAppt && <span className="text-xs font-medium text-blue-600">See All</span>}
       </div>
-      
+
       {upcomingAppt ? (
         <div onClick={() => navigate('appt_details')} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm active:scale-[0.99] transition-transform cursor-pointer relative overflow-hidden">
           {upcomingAppt.type === 'VIDEO' && (
@@ -751,11 +751,11 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
             </div>
           )}
 
-           {upcomingAppt.reminder && (
+          {upcomingAppt.reminder && (
             <div className="flex items-center gap-1 text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded w-fit mb-3">
               <BellRing size={10} /> REMINDER SET
             </div>
-           )}
+          )}
 
           <div className="flex gap-4 border-b border-gray-100 pb-4 mb-4">
             <img src={upcomingAppt.image} alt="Dr" className="w-12 h-12 rounded-full bg-gray-100" />
@@ -764,7 +764,7 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
               <p className="text-xs text-gray-500">{upcomingAppt.dept}</p>
             </div>
           </div>
-          
+
           <div className="flex justify-between items-center text-sm text-gray-600 mb-2">
             <div className="flex items-center gap-2">
               <Calendar size={14} className="text-blue-500" />
@@ -778,9 +778,9 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
 
           {upcomingAppt.type === 'VIDEO' && (
             <div className="mt-3">
-              <Button 
-                variant="primary" 
-                className="py-2.5 text-sm bg-purple-600 shadow-purple-200 hover:bg-purple-700" 
+              <Button
+                variant="primary"
+                className="py-2.5 text-sm bg-purple-600 shadow-purple-200 hover:bg-purple-700"
                 icon={Video}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -811,10 +811,10 @@ const HomeScreen = ({ navigate, upcomingAppt, onStartVideoBooking, activeOrders 
         {NEWS.slice(0, 3).map((item) => (
           <div key={item.id} className="min-w-[240px] bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
             <div className="flex items-center justify-between mb-2">
-               <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md inline-block">
+              <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md inline-block">
                 {item.category}
-               </span>
-               <span className="text-[10px] text-gray-400">{item.date}</span>
+              </span>
+              <span className="text-[10px] text-gray-400">{item.date}</span>
             </div>
             <h4 className="font-bold text-gray-800 mb-1 line-clamp-1">{item.title}</h4>
             <p className="text-xs text-gray-500 line-clamp-2">{item.desc}</p>
@@ -834,7 +834,7 @@ const LabTestsScreen = ({ navigate, labCart, onAddToCart }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button onClick={() => navigate('home')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
-                <ArrowLeft size={24} />
+              <ArrowLeft size={24} />
             </button>
             <div>
               <h2 className="text-xl font-bold">Lab Services</h2>
@@ -851,13 +851,13 @@ const LabTestsScreen = ({ navigate, labCart, onAddToCart }) => {
 
         {/* Tab Switcher */}
         <div className="bg-gray-100 p-1 rounded-xl flex text-sm font-bold">
-          <button 
+          <button
             onClick={() => setActiveTab('book')}
             className={`flex-1 py-2 rounded-lg transition-all ${activeTab === 'book' ? 'bg-white shadow text-orange-600' : 'text-gray-500'}`}
           >
             Book Tests
           </button>
-          <button 
+          <button
             onClick={() => setActiveTab('reports')}
             className={`flex-1 py-2 rounded-lg transition-all ${activeTab === 'reports' ? 'bg-white shadow text-orange-600' : 'text-gray-500'}`}
           >
@@ -870,45 +870,45 @@ const LabTestsScreen = ({ navigate, labCart, onAddToCart }) => {
         {activeTab === 'book' ? (
           <>
             <div className="bg-gradient-to-r from-orange-500 to-orange-400 rounded-2xl p-6 text-white mb-8 shadow-lg shadow-orange-200">
-                <div className="flex justify-between items-start">
-                    <div>
-                        <h3 className="font-bold text-lg mb-1">Book via Prescription</h3>
-                        <p className="text-xs text-orange-100 mb-4 max-w-[150px]">Upload your doctor's note for lab tests.</p>
-                        <button className="bg-white text-orange-600 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 active:scale-95 transition-transform">
-                            <Upload size={14} /> Upload Now
-                        </button>
-                    </div>
-                    <div className="bg-white/20 p-3 rounded-xl">
-                        <ClipboardList size={32} />
-                    </div>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="font-bold text-lg mb-1">Book via Prescription</h3>
+                  <p className="text-xs text-orange-100 mb-4 max-w-[150px]">Upload your doctor's note for lab tests.</p>
+                  <button className="bg-white text-orange-600 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 active:scale-95 transition-transform">
+                    <Upload size={14} /> Upload Now
+                  </button>
                 </div>
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <ClipboardList size={32} />
+                </div>
+              </div>
             </div>
 
             <h3 className="font-bold text-gray-800 mb-4">Popular Tests</h3>
             <div className="space-y-3 pb-24">
-                {LAB_TESTS.map((test) => (
-                    <div key={test.id} className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${test.color}`}>
-                            <test.icon size={20} />
-                        </div>
-                        <div className="flex-1">
-                            <h4 className="font-bold text-gray-800 text-sm">{test.name}</h4>
-                            <div className="flex items-center gap-3 mt-1">
-                                <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{test.category}</span>
-                                <span className="text-[10px] text-gray-400 flex items-center gap-1"><Clock size={10} /> TAT: {test.tat}</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-end gap-2">
-                            <span className="font-bold text-gray-800 text-sm">₹{test.price}</span>
-                            <button 
-                                onClick={() => onAddToCart(test)}
-                                className="bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1.5 rounded-lg active:bg-orange-600 active:text-white transition-colors"
-                            >
-                                ADD
-                            </button>
-                        </div>
+              {LAB_TESTS.map((test) => (
+                <div key={test.id} className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${test.color}`}>
+                    <test.icon size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-800 text-sm">{test.name}</h4>
+                    <div className="flex items-center gap-3 mt-1">
+                      <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{test.category}</span>
+                      <span className="text-[10px] text-gray-400 flex items-center gap-1"><Clock size={10} /> TAT: {test.tat}</span>
                     </div>
-                ))}
+                  </div>
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="font-bold text-gray-800 text-sm">₹{test.price}</span>
+                    <button
+                      onClick={() => onAddToCart(test)}
+                      className="bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1.5 rounded-lg active:bg-orange-600 active:text-white transition-colors"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </>
         ) : (
@@ -929,17 +929,17 @@ const LabTestsScreen = ({ navigate, labCart, onAddToCart }) => {
                     {report.status}
                   </span>
                 </div>
-                
+
                 <div className="flex items-center justify-between pt-3 border-t border-gray-50">
                   <div className="flex items-center gap-2">
-                     <span className="text-[10px] text-gray-400 flex items-center gap-1">
-                       <Stethoscope size={10} /> Access: 
-                     </span>
-                     <span className="text-[10px] font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
-                       {report.doctor}
-                     </span>
+                    <span className="text-[10px] text-gray-400 flex items-center gap-1">
+                      <Stethoscope size={10} /> Access:
+                    </span>
+                    <span className="text-[10px] font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
+                      {report.doctor}
+                    </span>
                   </div>
-                  
+
                   {report.status === 'Uploaded' ? (
                     <button className="text-xs font-bold text-blue-600 flex items-center gap-1 active:scale-95 transition-transform">
                       <Download size={14} /> Download
@@ -958,115 +958,115 @@ const LabTestsScreen = ({ navigate, labCart, onAddToCart }) => {
 };
 
 const LabCartScreen = ({ navigate, cart, onRemove, onCheckout }) => {
-    const [collectionType, setCollectionType] = useState('home'); 
-    const [selectedSlot, setSelectedSlot] = useState(null);
-    
-    const cartTotal = cart.reduce((sum, item) => sum + item.price, 0);
-    const collectionFee = collectionType === 'home' ? 100 : 0;
-    const finalTotal = cartTotal + collectionFee;
+  const [collectionType, setCollectionType] = useState('home');
+  const [selectedSlot, setSelectedSlot] = useState(null);
 
-    const slots = ["07:00 AM", "08:00 AM", "09:30 AM", "11:00 AM", "02:00 PM"];
+  const cartTotal = cart.reduce((sum, item) => sum + item.price, 0);
+  const collectionFee = collectionType === 'home' ? 100 : 0;
+  const finalTotal = cartTotal + collectionFee;
 
-    if (cart.length === 0) {
-        return (
-            <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-gray-50">
-                 <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mb-4 text-gray-400">
-                    <FlaskConical size={32} />
-                 </div>
-                 <h2 className="text-xl font-bold text-gray-800">No Tests Selected</h2>
-                 <p className="text-gray-500 text-sm mb-6">Browse and book diagnostic tests.</p>
-                 <Button onClick={() => navigate('lab')}>View Tests</Button>
-            </div>
-        );
-    }
+  const slots = ["07:00 AM", "08:00 AM", "09:30 AM", "11:00 AM", "02:00 PM"];
 
+  if (cart.length === 0) {
     return (
-        <div className="h-full flex flex-col bg-gray-50">
-            <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
-                <button onClick={() => navigate('lab')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
-                    <ArrowLeft size={24} />
-                </button>
-                <h2 className="text-xl font-bold">Book Tests</h2>
-            </div>
-
-            <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
-                <div className="space-y-3 mb-6">
-                    {cart.map((item, idx) => (
-                        <div key={`${item.id}-${idx}`} className="bg-white p-4 rounded-xl shadow-sm flex items-center justify-between">
-                            <div>
-                                <h4 className="font-bold text-sm text-gray-800">{item.name}</h4>
-                                <p className="text-xs text-gray-500">₹{item.price}</p>
-                            </div>
-                            <button onClick={() => onRemove(idx)} className="p-2 text-gray-400 hover:text-red-500"><X size={16} /></button>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="bg-white p-4 rounded-xl shadow-sm mb-6">
-                    <h3 className="font-bold text-sm text-gray-800 mb-3">Collection Method</h3>
-                    <div className="flex bg-gray-100 p-1 rounded-xl mb-4">
-                        <button 
-                            onClick={() => setCollectionType('home')}
-                            className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${collectionType === 'home' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500'}`}
-                        >
-                            Home Collection
-                        </button>
-                        <button 
-                            onClick={() => setCollectionType('center')}
-                            className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${collectionType === 'center' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500'}`}
-                        >
-                            Visit Lab Center
-                        </button>
-                    </div>
-                    {collectionType === 'home' && (
-                        <div className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg border border-orange-100">
-                            <MapPin size={18} className="text-orange-600 mt-0.5" />
-                            <div>
-                                <p className="text-xs font-bold text-gray-800">Home Address</p>
-                                <p className="text-[10px] text-gray-500">#46, 3rd Floor, BEML Layout, RR Nagar</p>
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-                <div className="bg-white p-4 rounded-xl shadow-sm mb-6">
-                    <h3 className="font-bold text-sm text-gray-800 mb-3">Select Slot (Tomorrow)</h3>
-                    <div className="grid grid-cols-3 gap-2">
-                        {slots.map((slot) => (
-                            <button 
-                                key={slot}
-                                onClick={() => setSelectedSlot(slot)}
-                                className={`py-2 text-xs font-bold rounded-lg border transition-all ${selectedSlot === slot ? 'bg-orange-50 border-orange-500 text-orange-600' : 'border-gray-200 text-gray-600'}`}
-                            >
-                                {slot}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="bg-white p-4 rounded-xl shadow-sm">
-                    <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-gray-500">Total Tests Price</span>
-                        <span className="font-bold text-gray-800">₹{cartTotal}</span>
-                    </div>
-                    <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-gray-500">Collection Charges</span>
-                        <span className="font-bold text-gray-800">{collectionFee === 0 ? 'FREE' : `₹${collectionFee}`}</span>
-                    </div>
-                    <div className="border-t border-gray-100 mt-2 pt-2 flex justify-between items-center">
-                        <span className="font-bold text-gray-800">To Pay</span>
-                        <span className="font-bold text-xl text-orange-600">₹{finalTotal}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="p-6 border-t border-gray-100 bg-white">
-                <Button onClick={() => onCheckout({ total: finalTotal, slot: selectedSlot })} disabled={!selectedSlot}>
-                    Proceed to Pay
-                </Button>
-            </div>
+      <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-gray-50">
+        <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mb-4 text-gray-400">
+          <FlaskConical size={32} />
         </div>
+        <h2 className="text-xl font-bold text-gray-800">No Tests Selected</h2>
+        <p className="text-gray-500 text-sm mb-6">Browse and book diagnostic tests.</p>
+        <Button onClick={() => navigate('lab')}>View Tests</Button>
+      </div>
     );
+  }
+
+  return (
+    <div className="h-full flex flex-col bg-gray-50">
+      <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
+        <button onClick={() => navigate('lab')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
+          <ArrowLeft size={24} />
+        </button>
+        <h2 className="text-xl font-bold">Book Tests</h2>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
+        <div className="space-y-3 mb-6">
+          {cart.map((item, idx) => (
+            <div key={`${item.id}-${idx}`} className="bg-white p-4 rounded-xl shadow-sm flex items-center justify-between">
+              <div>
+                <h4 className="font-bold text-sm text-gray-800">{item.name}</h4>
+                <p className="text-xs text-gray-500">₹{item.price}</p>
+              </div>
+              <button onClick={() => onRemove(idx)} className="p-2 text-gray-400 hover:text-red-500"><X size={16} /></button>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white p-4 rounded-xl shadow-sm mb-6">
+          <h3 className="font-bold text-sm text-gray-800 mb-3">Collection Method</h3>
+          <div className="flex bg-gray-100 p-1 rounded-xl mb-4">
+            <button
+              onClick={() => setCollectionType('home')}
+              className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${collectionType === 'home' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500'}`}
+            >
+              Home Collection
+            </button>
+            <button
+              onClick={() => setCollectionType('center')}
+              className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${collectionType === 'center' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500'}`}
+            >
+              Visit Lab Center
+            </button>
+          </div>
+          {collectionType === 'home' && (
+            <div className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg border border-orange-100">
+              <MapPin size={18} className="text-orange-600 mt-0.5" />
+              <div>
+                <p className="text-xs font-bold text-gray-800">Home Address</p>
+                <p className="text-[10px] text-gray-500">#46, 3rd Floor, BEML Layout, RR Nagar</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-4 rounded-xl shadow-sm mb-6">
+          <h3 className="font-bold text-sm text-gray-800 mb-3">Select Slot (Tomorrow)</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {slots.map((slot) => (
+              <button
+                key={slot}
+                onClick={() => setSelectedSlot(slot)}
+                className={`py-2 text-xs font-bold rounded-lg border transition-all ${selectedSlot === slot ? 'bg-orange-50 border-orange-500 text-orange-600' : 'border-gray-200 text-gray-600'}`}
+              >
+                {slot}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white p-4 rounded-xl shadow-sm">
+          <div className="flex justify-between items-center mb-2 text-sm">
+            <span className="text-gray-500">Total Tests Price</span>
+            <span className="font-bold text-gray-800">₹{cartTotal}</span>
+          </div>
+          <div className="flex justify-between items-center mb-2 text-sm">
+            <span className="text-gray-500">Collection Charges</span>
+            <span className="font-bold text-gray-800">{collectionFee === 0 ? 'FREE' : `₹${collectionFee}`}</span>
+          </div>
+          <div className="border-t border-gray-100 mt-2 pt-2 flex justify-between items-center">
+            <span className="font-bold text-gray-800">To Pay</span>
+            <span className="font-bold text-xl text-orange-600">₹{finalTotal}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-6 border-t border-gray-100 bg-white">
+        <Button onClick={() => onCheckout({ total: finalTotal, slot: selectedSlot })} disabled={!selectedSlot}>
+          Proceed to Pay
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 const RecordsScreen = ({ navigate, onSelectConsultation }) => (
@@ -1078,53 +1078,53 @@ const RecordsScreen = ({ navigate, onSelectConsultation }) => (
 
     <div className="p-6 space-y-4 overflow-y-auto scrollbar-hide">
       {CONSULTATIONS.map((consult) => (
-        <div 
-          key={consult.id} 
+        <div
+          key={consult.id}
           onClick={() => onSelectConsultation(consult)}
           className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col gap-3 active:scale-[0.99] transition-transform cursor-pointer"
         >
           {/* Header */}
           <div className="flex justify-between items-start">
             <div className="flex gap-3 items-center">
-               <div className={`p-2.5 rounded-xl ${consult.type === 'VIDEO' ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
-                  {consult.type === 'VIDEO' ? <Video size={20} /> : <Stethoscope size={20} />}
-               </div>
-               <div>
-                  <h4 className="font-bold text-gray-800">{consult.doctor}</h4>
-                  <p className="text-xs text-gray-500">{consult.dept}</p>
-               </div>
+              <div className={`p-2.5 rounded-xl ${consult.type === 'VIDEO' ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
+                {consult.type === 'VIDEO' ? <Video size={20} /> : <Stethoscope size={20} />}
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-800">{consult.doctor}</h4>
+                <p className="text-xs text-gray-500">{consult.dept}</p>
+              </div>
             </div>
             <div className="flex flex-col items-end">
-                <span className="text-[10px] font-bold text-gray-500 bg-gray-50 px-2 py-1 rounded-lg border border-gray-200">
+              <span className="text-[10px] font-bold text-gray-500 bg-gray-50 px-2 py-1 rounded-lg border border-gray-200">
                 {consult.date}
-                </span>
-                <span className="text-[9px] text-gray-400 mt-1">#{consult.id}</span>
+              </span>
+              <span className="text-[9px] text-gray-400 mt-1">#{consult.id}</span>
             </div>
           </div>
 
           {/* Diagnosis Preview */}
           <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
-             <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">Diagnosis</p>
-             <p className="text-sm text-gray-800 font-medium">{consult.diagnosis}</p>
+            <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">Diagnosis</p>
+            <p className="text-sm text-gray-800 font-medium">{consult.diagnosis}</p>
           </div>
 
           {/* Actions */}
           <div className="flex items-center justify-between mt-1">
-             <div className="flex gap-2">
-                {consult.medicines.length > 0 && (
-                   <div className="flex items-center gap-1 text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                      <Pill size={12} /> {consult.medicines.length} Meds
-                   </div>
-                )}
-                {consult.labReports.length > 0 && (
-                   <div className="flex items-center gap-1 text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                      <TestTube size={12} /> {consult.labReports.length} Labs
-                   </div>
-                )}
-             </div>
-             <div className="text-xs font-bold text-blue-600 flex items-center gap-1">
-                View Unified Record <ChevronRight size={14} />
-             </div>
+            <div className="flex gap-2">
+              {consult.medicines.length > 0 && (
+                <div className="flex items-center gap-1 text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                  <Pill size={12} /> {consult.medicines.length} Meds
+                </div>
+              )}
+              {consult.labReports.length > 0 && (
+                <div className="flex items-center gap-1 text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                  <TestTube size={12} /> {consult.labReports.length} Labs
+                </div>
+              )}
+            </div>
+            <div className="text-xs font-bold text-blue-600 flex items-center gap-1">
+              View Unified Record <ChevronRight size={14} />
+            </div>
           </div>
         </div>
       ))}
@@ -1138,7 +1138,7 @@ const ConsultationDetailScreen = ({ navigate, consultation, onBookFollowUp }) =>
       {/* Header */}
       <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
         <button onClick={() => navigate('records')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
-            <ArrowLeft size={24} />
+          <ArrowLeft size={24} />
         </button>
         <div>
           <h2 className="text-xl font-bold">Unified Record</h2>
@@ -1149,132 +1149,132 @@ const ConsultationDetailScreen = ({ navigate, consultation, onBookFollowUp }) =>
       <div className="flex-1 overflow-y-auto p-6 scrollbar-hide space-y-6 pb-24">
         {/* Doctor Info Card */}
         <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-           <div className={`p-3 rounded-full ${consultation.type === 'VIDEO' ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
-              {consultation.type === 'VIDEO' ? <Video size={24} /> : <User size={24} />}
-           </div>
-           <div>
-              <h3 className="font-bold text-gray-800">{consultation.doctor}</h3>
-              <p className="text-xs text-gray-500">{consultation.dept}</p>
-              <p className="text-[10px] text-gray-400 mt-1">{consultation.date} • {consultation.time}</p>
-           </div>
+          <div className={`p-3 rounded-full ${consultation.type === 'VIDEO' ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
+            {consultation.type === 'VIDEO' ? <Video size={24} /> : <User size={24} />}
+          </div>
+          <div>
+            <h3 className="font-bold text-gray-800">{consultation.doctor}</h3>
+            <p className="text-xs text-gray-500">{consultation.dept}</p>
+            <p className="text-[10px] text-gray-400 mt-1">{consultation.date} • {consultation.time}</p>
+          </div>
         </div>
 
         {/* 1. Diagnosis Details */}
         <div>
-           <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <Activity size={16} className="text-blue-600" /> Diagnosis Details
-           </h3>
-           <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-              <div className="mb-4">
-                 <p className="text-sm font-medium text-gray-800">{consultation.diagnosis}</p>
+          <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+            <Activity size={16} className="text-blue-600" /> Diagnosis Details
+          </h3>
+          <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+            <div className="mb-4">
+              <p className="text-sm font-medium text-gray-800">{consultation.diagnosis}</p>
+            </div>
+
+            {/* Vitals Grid */}
+            <div className="grid grid-cols-4 gap-2">
+              <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
+                <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><HeartPulse size={10} /> BP</p>
+                <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.bp}</p>
               </div>
-              
-              {/* Vitals Grid */}
-              <div className="grid grid-cols-4 gap-2">
-                  <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
-                      <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><HeartPulse size={10} /> BP</p>
-                      <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.bp}</p>
-                  </div>
-                  <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
-                      <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><Thermometer size={10} /> Temp</p>
-                      <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.temp}</p>
-                  </div>
-                  <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
-                      <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><Weight size={10} /> Wt</p>
-                      <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.weight}</p>
-                  </div>
-                  <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
-                      <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><Activity size={10} /> HR</p>
-                      <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.pulse}</p>
-                  </div>
+              <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
+                <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><Thermometer size={10} /> Temp</p>
+                <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.temp}</p>
               </div>
-           </div>
+              <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
+                <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><Weight size={10} /> Wt</p>
+                <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.weight}</p>
+              </div>
+              <div className="bg-gray-50 p-2 rounded-lg text-center border border-gray-100">
+                <p className="text-[9px] text-gray-500 font-bold uppercase flex justify-center gap-1"><Activity size={10} /> HR</p>
+                <p className="font-bold text-gray-800 text-xs mt-1">{consultation.vitals.pulse}</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 2. Doctor Consultation Notes */}
         <div>
-           <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <ClipboardList size={16} className="text-yellow-600" /> Doctor Consultation Notes
-           </h3>
-           <div className="bg-yellow-50 p-4 rounded-2xl border border-yellow-100 shadow-sm">
-              <p className="text-xs text-gray-700 leading-relaxed italic">
-                 "{consultation.notes}"
-              </p>
-           </div>
+          <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+            <ClipboardList size={16} className="text-yellow-600" /> Doctor Consultation Notes
+          </h3>
+          <div className="bg-yellow-50 p-4 rounded-2xl border border-yellow-100 shadow-sm">
+            <p className="text-xs text-gray-700 leading-relaxed italic">
+              "{consultation.notes}"
+            </p>
+          </div>
         </div>
 
         {/* 3. Digital Prescriptions */}
         <div>
-           <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <FileCheck size={16} className="text-green-600" /> Digital Prescriptions
-           </h3>
-           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              {consultation.medicines.map((med, idx) => (
-                 <div key={idx} className="p-4 border-b border-gray-50 last:border-0 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                       <div className="bg-green-50 text-green-600 p-2 rounded-lg">
-                          {med.type === 'Tablet' ? <Pill size={16} /> : <Syringe size={16} />}
-                       </div>
-                       <div>
-                          <p className="text-sm font-bold text-gray-800">{med.name}</p>
-                          <p className="text-xs text-gray-500">{med.type}</p>
-                       </div>
-                    </div>
-                    <div className="text-right">
-                       <p className="text-xs font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded">{med.dosage}</p>
-                    </div>
-                 </div>
-              ))}
-              <div className="p-3 bg-gray-50 text-center border-t border-gray-100">
-                 <button className="text-xs font-bold text-blue-600 flex items-center justify-center gap-2 w-full py-1">
-                    <Download size={14} /> Download Rx PDF
-                 </button>
+          <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+            <FileCheck size={16} className="text-green-600" /> Digital Prescriptions
+          </h3>
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            {consultation.medicines.map((med, idx) => (
+              <div key={idx} className="p-4 border-b border-gray-50 last:border-0 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="bg-green-50 text-green-600 p-2 rounded-lg">
+                    {med.type === 'Tablet' ? <Pill size={16} /> : <Syringe size={16} />}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-800">{med.name}</p>
+                    <p className="text-xs text-gray-500">{med.type}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded">{med.dosage}</p>
+                </div>
               </div>
-           </div>
+            ))}
+            <div className="p-3 bg-gray-50 text-center border-t border-gray-100">
+              <button className="text-xs font-bold text-blue-600 flex items-center justify-center gap-2 w-full py-1">
+                <Download size={14} /> Download Rx PDF
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* 4. Lab Reports Mapping */}
         {consultation.labReports.length > 0 && (
-           <div>
-              <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                 <TestTube size={16} className="text-purple-600" /> Lab Reports Mapping
-              </h3>
-              <div className="space-y-3">
-                 {consultation.labReports.map((lab) => (
-                    <div key={lab.id} className="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:bg-gray-50 transition-colors">
-                       <div className="flex items-center gap-3">
-                          <div className="bg-purple-50 text-purple-600 p-2 rounded-lg">
-                             <FileText size={16} />
-                          </div>
-                          <div>
-                             <p className="text-sm font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{lab.name}</p>
-                             <p className="text-[10px] text-gray-500">ID: {lab.id} • {lab.status}</p>
-                          </div>
-                       </div>
-                       <ChevronRight size={16} className="text-gray-300" />
+          <div>
+            <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+              <TestTube size={16} className="text-purple-600" /> Lab Reports Mapping
+            </h3>
+            <div className="space-y-3">
+              {consultation.labReports.map((lab) => (
+                <div key={lab.id} className="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:bg-gray-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-purple-50 text-purple-600 p-2 rounded-lg">
+                      <FileText size={16} />
                     </div>
-                 ))}
-              </div>
-           </div>
+                    <div>
+                      <p className="text-sm font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{lab.name}</p>
+                      <p className="text-[10px] text-gray-500">ID: {lab.id} • {lab.status}</p>
+                    </div>
+                  </div>
+                  <ChevronRight size={16} className="text-gray-300" />
+                </div>
+              ))}
+            </div>
+          </div>
         )}
 
         {/* 5. Follow-up Appointment Scheduling */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-5 rounded-2xl shadow-lg shadow-blue-200 mt-4">
-           <div className="flex items-start justify-between mb-4">
-              <div>
-                 <h4 className="font-bold">Follow-up Scheduled</h4>
-                 <p className="text-sm text-blue-100 opacity-90">Recommended: {consultation.followUp}</p>
-              </div>
-              <div className="bg-white/20 p-2 rounded-lg">
-                 <Calendar size={20} className="text-white" />
-              </div>
-           </div>
-           <button 
-              onClick={() => onBookFollowUp(consultation)}
-              className="w-full py-3 bg-white text-blue-600 rounded-xl font-bold text-sm hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 shadow-sm"
-           >
-              Book Follow-up Appointment <ArrowLeft size={16} className="rotate-180" />
-           </button>
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h4 className="font-bold">Follow-up Scheduled</h4>
+              <p className="text-sm text-blue-100 opacity-90">Recommended: {consultation.followUp}</p>
+            </div>
+            <div className="bg-white/20 p-2 rounded-lg">
+              <Calendar size={20} className="text-white" />
+            </div>
+          </div>
+          <button
+            onClick={() => onBookFollowUp(consultation)}
+            className="w-full py-3 bg-white text-blue-600 rounded-xl font-bold text-sm hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 shadow-sm"
+          >
+            Book Follow-up Appointment <ArrowLeft size={16} className="rotate-180" />
+          </button>
         </div>
 
       </div>
@@ -1287,7 +1287,7 @@ const PharmacyScreen = ({ navigate, cart, onAddToCart }) => (
     <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center justify-between">
       <div className="flex items-center gap-4">
         <button onClick={() => navigate('home')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
-            <ArrowLeft size={24} />
+          <ArrowLeft size={24} />
         </button>
         <div>
           <h2 className="text-xl font-bold">Pharmacy</h2>
@@ -1295,166 +1295,166 @@ const PharmacyScreen = ({ navigate, cart, onAddToCart }) => (
         </div>
       </div>
       <button onClick={() => navigate('pharmacy_cart')} className="p-2 bg-gray-100 rounded-full relative">
-         <ShoppingBag size={20} className="text-gray-600" />
-         {cart.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white w-4 h-4 rounded-full text-[10px] flex items-center justify-center font-bold">{cart.length}</span>}
+        <ShoppingBag size={20} className="text-gray-600" />
+        {cart.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white w-4 h-4 rounded-full text-[10px] flex items-center justify-center font-bold">{cart.length}</span>}
       </button>
     </div>
 
     <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
-        <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-6 text-white mb-8 shadow-lg shadow-blue-200">
-            <div className="flex justify-between items-start">
-                <div>
-                    <h3 className="font-bold text-lg mb-1">Upload Prescription</h3>
-                    <p className="text-xs text-blue-100 mb-4 max-w-[150px]">We will read it and add medicines to your cart.</p>
-                    <button className="bg-white text-blue-600 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 active:scale-95 transition-transform">
-                        <Upload size={14} /> Upload Now
-                    </button>
-                </div>
-                <div className="bg-white/20 p-3 rounded-xl">
-                    <FileText size={32} />
-                </div>
-            </div>
+      <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-6 text-white mb-8 shadow-lg shadow-blue-200">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="font-bold text-lg mb-1">Upload Prescription</h3>
+            <p className="text-xs text-blue-100 mb-4 max-w-[150px]">We will read it and add medicines to your cart.</p>
+            <button className="bg-white text-blue-600 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 active:scale-95 transition-transform">
+              <Upload size={14} /> Upload Now
+            </button>
+          </div>
+          <div className="bg-white/20 p-3 rounded-xl">
+            <FileText size={32} />
+          </div>
         </div>
+      </div>
 
-        <h3 className="font-bold text-gray-800 mb-4">Shop Medicines</h3>
-        <div className="grid grid-cols-2 gap-4 pb-24">
-            {MEDICINES.map((med) => (
-                <div key={med.id} className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col">
-                    <div className="w-full h-24 bg-gray-50 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
-                        <img src={med.image} className="w-full h-full object-cover" alt={med.name} />
-                    </div>
-                    <div className="flex-1">
-                        <h4 className="font-bold text-sm text-gray-800 line-clamp-2">{med.name}</h4>
-                        <p className="text-[10px] text-gray-500 mb-2">{med.type}</p>
-                    </div>
-                    <div className="flex items-center justify-between mt-auto">
-                        <span className="font-bold text-gray-800">₹{med.price}</span>
-                        <button 
-                            onClick={() => onAddToCart(med)}
-                            className="w-8 h-8 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center active:bg-emerald-600 active:text-white transition-colors"
-                        >
-                            <Plus size={16} />
-                        </button>
-                    </div>
-                </div>
-            ))}
-        </div>
+      <h3 className="font-bold text-gray-800 mb-4">Shop Medicines</h3>
+      <div className="grid grid-cols-2 gap-4 pb-24">
+        {MEDICINES.map((med) => (
+          <div key={med.id} className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col">
+            <div className="w-full h-24 bg-gray-50 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+              <img src={med.image} className="w-full h-full object-cover" alt={med.name} />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-bold text-sm text-gray-800 line-clamp-2">{med.name}</h4>
+              <p className="text-[10px] text-gray-500 mb-2">{med.type}</p>
+            </div>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="font-bold text-gray-800">₹{med.price}</span>
+              <button
+                onClick={() => onAddToCart(med)}
+                className="w-8 h-8 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center active:bg-emerald-600 active:text-white transition-colors"
+              >
+                <Plus size={16} />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
 
 const PharmacyCartScreen = ({ navigate, cart, onUpdateQty, onCheckout }) => {
-    const [deliveryMode, setDeliveryMode] = useState('delivery');
-    const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const deliveryFee = deliveryMode === 'delivery' ? 40 : 0;
-    const finalTotal = cartTotal + deliveryFee;
+  const [deliveryMode, setDeliveryMode] = useState('delivery');
+  const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  const deliveryFee = deliveryMode === 'delivery' ? 40 : 0;
+  const finalTotal = cartTotal + deliveryFee;
 
-    if (cart.length === 0) {
-        return (
-            <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-gray-50">
-                 <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mb-4 text-gray-400">
-                    <ShoppingBag size={32} />
-                 </div>
-                 <h2 className="text-xl font-bold text-gray-800">Your Cart is Empty</h2>
-                 <p className="text-gray-500 text-sm mb-6">Add medicines from the pharmacy store.</p>
-                 <Button onClick={() => navigate('pharmacy')}>Browse Medicines</Button>
-            </div>
-        );
-    }
-
+  if (cart.length === 0) {
     return (
-        <div className="h-full flex flex-col bg-gray-50">
-            <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
-                <button onClick={() => navigate('pharmacy')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
-                    <ArrowLeft size={24} />
-                </button>
-                <h2 className="text-xl font-bold">Your Cart</h2>
-            </div>
-
-            <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
-                <div className="space-y-4 mb-8">
-                    {cart.map((item) => (
-                        <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-4">
-                            <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center">
-                                <Pill size={20} className="text-gray-400" />
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="font-bold text-sm text-gray-800">{item.name}</h4>
-                                <p className="text-xs text-gray-500">₹{item.price}</p>
-                            </div>
-                            <div className="flex items-center gap-3 bg-gray-50 px-2 py-1 rounded-lg">
-                                <button onClick={() => onUpdateQty(item.id, -1)} className="w-6 h-6 flex items-center justify-center text-gray-600"><Minus size={14} /></button>
-                                <span className="text-sm font-bold w-4 text-center">{item.qty}</span>
-                                <button onClick={() => onUpdateQty(item.id, 1)} className="w-6 h-6 flex items-center justify-center text-gray-600"><Plus size={14} /></button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="bg-white p-4 rounded-xl shadow-sm mb-6">
-                    <h3 className="font-bold text-sm text-gray-800 mb-3">Delivery Option</h3>
-                    <div className="flex bg-gray-100 p-1 rounded-xl">
-                        <button onClick={() => setDeliveryMode('delivery')} className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${deliveryMode === 'delivery' ? 'bg-white shadow-sm text-emerald-600' : 'text-gray-500'}`}>Home Delivery</button>
-                        <button onClick={() => setDeliveryMode('pickup')} className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${deliveryMode === 'pickup' ? 'bg-white shadow-sm text-emerald-600' : 'text-gray-500'}`}>Hospital Pickup</button>
-                    </div>
-                    {deliveryMode === 'delivery' ? (
-                        <div className="mt-4 flex items-start gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
-                            <Truck size={18} className="text-emerald-600 mt-0.5" />
-                            <div><p className="text-xs font-bold text-gray-800">Delivering to Home</p><p className="text-[10px] text-gray-500">#46, 3rd Floor, BEML Layout, RR Nagar, Bengaluru</p></div>
-                        </div>
-                    ) : (
-                         <div className="mt-4 flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
-                            <MapPin size={18} className="text-blue-600 mt-0.5" />
-                            <div><p className="text-xs font-bold text-gray-800">Pickup from Hospital</p><p className="text-[10px] text-gray-500">Sagar Hospital Pharmacy, Block A, Ground Floor</p></div>
-                        </div>
-                    )}
-                </div>
-
-                <div className="bg-white p-4 rounded-xl shadow-sm">
-                    <div className="flex justify-between items-center mb-2 text-sm"><span className="text-gray-500">Item Total</span><span className="font-bold text-gray-800">₹{cartTotal}</span></div>
-                    <div className="flex justify-between items-center mb-2 text-sm"><span className="text-gray-500">Delivery Fee</span><span className="font-bold text-gray-800">{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span></div>
-                    <div className="border-t border-gray-100 mt-2 pt-2 flex justify-between items-center"><span className="font-bold text-gray-800">To Pay</span><span className="font-bold text-xl text-emerald-600">₹{finalTotal}</span></div>
-                </div>
-            </div>
-            <div className="p-6 border-t border-gray-100 bg-white"><Button onClick={() => onCheckout({ total: finalTotal, mode: deliveryMode })}>Proceed to Pay</Button></div>
+      <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-gray-50">
+        <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mb-4 text-gray-400">
+          <ShoppingBag size={32} />
         </div>
+        <h2 className="text-xl font-bold text-gray-800">Your Cart is Empty</h2>
+        <p className="text-gray-500 text-sm mb-6">Add medicines from the pharmacy store.</p>
+        <Button onClick={() => navigate('pharmacy')}>Browse Medicines</Button>
+      </div>
     );
+  }
+
+  return (
+    <div className="h-full flex flex-col bg-gray-50">
+      <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
+        <button onClick={() => navigate('pharmacy')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
+          <ArrowLeft size={24} />
+        </button>
+        <h2 className="text-xl font-bold">Your Cart</h2>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
+        <div className="space-y-4 mb-8">
+          {cart.map((item) => (
+            <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center">
+                <Pill size={20} className="text-gray-400" />
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-sm text-gray-800">{item.name}</h4>
+                <p className="text-xs text-gray-500">₹{item.price}</p>
+              </div>
+              <div className="flex items-center gap-3 bg-gray-50 px-2 py-1 rounded-lg">
+                <button onClick={() => onUpdateQty(item.id, -1)} className="w-6 h-6 flex items-center justify-center text-gray-600"><Minus size={14} /></button>
+                <span className="text-sm font-bold w-4 text-center">{item.qty}</span>
+                <button onClick={() => onUpdateQty(item.id, 1)} className="w-6 h-6 flex items-center justify-center text-gray-600"><Plus size={14} /></button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white p-4 rounded-xl shadow-sm mb-6">
+          <h3 className="font-bold text-sm text-gray-800 mb-3">Delivery Option</h3>
+          <div className="flex bg-gray-100 p-1 rounded-xl">
+            <button onClick={() => setDeliveryMode('delivery')} className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${deliveryMode === 'delivery' ? 'bg-white shadow-sm text-emerald-600' : 'text-gray-500'}`}>Home Delivery</button>
+            <button onClick={() => setDeliveryMode('pickup')} className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${deliveryMode === 'pickup' ? 'bg-white shadow-sm text-emerald-600' : 'text-gray-500'}`}>Hospital Pickup</button>
+          </div>
+          {deliveryMode === 'delivery' ? (
+            <div className="mt-4 flex items-start gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+              <Truck size={18} className="text-emerald-600 mt-0.5" />
+              <div><p className="text-xs font-bold text-gray-800">Delivering to Home</p><p className="text-[10px] text-gray-500">#46, 3rd Floor, BEML Layout, RR Nagar, Bengaluru</p></div>
+            </div>
+          ) : (
+            <div className="mt-4 flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
+              <MapPin size={18} className="text-blue-600 mt-0.5" />
+              <div><p className="text-xs font-bold text-gray-800">Pickup from Hospital</p><p className="text-[10px] text-gray-500">Sagar Hospital Pharmacy, Block A, Ground Floor</p></div>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-4 rounded-xl shadow-sm">
+          <div className="flex justify-between items-center mb-2 text-sm"><span className="text-gray-500">Item Total</span><span className="font-bold text-gray-800">₹{cartTotal}</span></div>
+          <div className="flex justify-between items-center mb-2 text-sm"><span className="text-gray-500">Delivery Fee</span><span className="font-bold text-gray-800">{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span></div>
+          <div className="border-t border-gray-100 mt-2 pt-2 flex justify-between items-center"><span className="font-bold text-gray-800">To Pay</span><span className="font-bold text-xl text-emerald-600">₹{finalTotal}</span></div>
+        </div>
+      </div>
+      <div className="p-6 border-t border-gray-100 bg-white"><Button onClick={() => onCheckout({ total: finalTotal, mode: deliveryMode })}>Proceed to Pay</Button></div>
+    </div>
+  );
 };
 
 const PharmacyTrackingScreen = ({ navigate }) => (
-    <div className="h-full flex flex-col bg-gray-50">
-        <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
-             <button onClick={() => navigate('home')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full"><ArrowLeft size={24} /></button>
-             <h2 className="text-xl font-bold">Track Order</h2>
-        </div>
-        <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
-            <div className="bg-white p-6 rounded-2xl shadow-sm mb-6 text-center">
-                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 animate-pulse"><Truck size={32} /></div>
-                 <h3 className="font-bold text-lg text-gray-800">Out for Delivery</h3>
-                 <p className="text-xs text-gray-500">Arriving by 6:00 PM today</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm relative overflow-hidden">
-                <div className="absolute top-4 left-6 bottom-4 w-0.5 bg-gray-200"></div>
-                <div className="relative flex gap-4 mb-8">
-                    <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-100 z-10"></div>
-                    <div><p className="text-sm font-bold text-gray-800 leading-none">Order Placed</p><p className="text-[10px] text-gray-500 mt-1">11:30 AM</p></div>
-                </div>
-                <div className="relative flex gap-4 mb-8">
-                    <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-100 z-10"></div>
-                    <div><p className="text-sm font-bold text-gray-800 leading-none">Order Packed</p><p className="text-[10px] text-gray-500 mt-1">Pharmacy has packed your items</p></div>
-                </div>
-                <div className="relative flex gap-4 mb-8">
-                    <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-100 z-10 animate-pulse"></div>
-                    <div><p className="text-sm font-bold text-emerald-600 leading-none">Out for Delivery</p><p className="text-[10px] text-gray-500 mt-1">Driver is on the way</p></div>
-                </div>
-                <div className="relative flex gap-4">
-                    <div className="w-4 h-4 rounded-full bg-gray-300 border-2 border-white shadow z-10"></div>
-                    <div><p className="text-sm font-bold text-gray-400 leading-none">Delivered</p><p className="text-[10px] text-gray-400 mt-1">Pending</p></div>
-                </div>
-            </div>
-            <div className="mt-6"><Button variant="secondary" onClick={() => navigate('home')}>Back to Home</Button></div>
-        </div>
+  <div className="h-full flex flex-col bg-gray-50">
+    <div className="p-6 pt-14 pb-4 bg-white shadow-sm sticky top-0 z-10 flex items-center gap-4">
+      <button onClick={() => navigate('home')} className="p-2 -ml-2 hover:bg-gray-100 rounded-full"><ArrowLeft size={24} /></button>
+      <h2 className="text-xl font-bold">Track Order</h2>
     </div>
+    <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
+      <div className="bg-white p-6 rounded-2xl shadow-sm mb-6 text-center">
+        <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 animate-pulse"><Truck size={32} /></div>
+        <h3 className="font-bold text-lg text-gray-800">Out for Delivery</h3>
+        <p className="text-xs text-gray-500">Arriving by 6:00 PM today</p>
+      </div>
+      <div className="bg-white p-6 rounded-2xl shadow-sm relative overflow-hidden">
+        <div className="absolute top-4 left-6 bottom-4 w-0.5 bg-gray-200"></div>
+        <div className="relative flex gap-4 mb-8">
+          <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-100 z-10"></div>
+          <div><p className="text-sm font-bold text-gray-800 leading-none">Order Placed</p><p className="text-[10px] text-gray-500 mt-1">11:30 AM</p></div>
+        </div>
+        <div className="relative flex gap-4 mb-8">
+          <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-100 z-10"></div>
+          <div><p className="text-sm font-bold text-gray-800 leading-none">Order Packed</p><p className="text-[10px] text-gray-500 mt-1">Pharmacy has packed your items</p></div>
+        </div>
+        <div className="relative flex gap-4 mb-8">
+          <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-100 z-10 animate-pulse"></div>
+          <div><p className="text-sm font-bold text-emerald-600 leading-none">Out for Delivery</p><p className="text-[10px] text-gray-500 mt-1">Driver is on the way</p></div>
+        </div>
+        <div className="relative flex gap-4">
+          <div className="w-4 h-4 rounded-full bg-gray-300 border-2 border-white shadow z-10"></div>
+          <div><p className="text-sm font-bold text-gray-400 leading-none">Delivered</p><p className="text-[10px] text-gray-400 mt-1">Pending</p></div>
+        </div>
+      </div>
+      <div className="mt-6"><Button variant="secondary" onClick={() => navigate('home')}>Back to Home</Button></div>
+    </div>
+  </div>
 );
 
 const VideoCallScreen = ({ navigate, doctor }) => {
@@ -1573,8 +1573,8 @@ const BookingScreen = ({ navigate, doctor, onConfirmBooking, isRescheduling, boo
       </div>
       <div className="p-6 flex-1 overflow-y-auto scrollbar-hide">
         <div className={`flex items-center gap-3 mb-6 p-4 rounded-xl ${bookingType === 'VIDEO' ? 'bg-purple-50' : 'bg-blue-50'}`}>
-            <div className="bg-white p-2 rounded-lg">{bookingType === 'VIDEO' ? <Video size={20} className="text-purple-600" /> : <Clock size={20} className="text-blue-600" />}</div>
-            <div><p className="text-xs text-gray-500">Mode</p><p className="text-sm font-bold text-gray-800">{bookingType === 'VIDEO' ? 'Video Consultation' : 'In-Person OPD'}</p></div>
+          <div className="bg-white p-2 rounded-lg">{bookingType === 'VIDEO' ? <Video size={20} className="text-purple-600" /> : <Clock size={20} className="text-blue-600" />}</div>
+          <div><p className="text-xs text-gray-500">Mode</p><p className="text-sm font-bold text-gray-800">{bookingType === 'VIDEO' ? 'Video Consultation' : 'In-Person OPD'}</p></div>
         </div>
         <h3 className="font-bold text-gray-800 mb-4">February 2026</h3>
         <div className="flex justify-between mb-8">{dates.map((d, i) => (<div key={i} onClick={() => setSelectedDate(i)} className={`flex flex-col items-center justify-center w-14 h-20 rounded-2xl cursor-pointer transition-all ${selectedDate === i ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'bg-white border border-gray-100 text-gray-400'}`}><span className="text-xs font-medium mb-1">{d.day}</span><span className="text-xl font-bold">{d.date}</span></div>))}</div>
@@ -1594,15 +1594,15 @@ const PaymentScreen = ({ navigate, bookingDetails, onPaymentSuccess }) => {
   if (!bookingDetails) return <div className="h-full flex items-center justify-center">Loading...</div>;
 
   const handlePay = () => { setProcessing(true); setTimeout(() => { setProcessing(false); onPaymentSuccess(); navigate(bookingDetails.type === 'PHARMACY' || bookingDetails.type === 'LAB' || bookingDetails.type === 'BILL' ? 'success' : 'success'); }, 2000); };
-  
+
   let totalAmount = 0;
   let description = "";
   if (bookingDetails.type === 'PHARMACY' || bookingDetails.type === 'LAB' || bookingDetails.type === 'BILL') {
-      totalAmount = bookingDetails.totalAmount;
-      description = bookingDetails.description;
+    totalAmount = bookingDetails.totalAmount;
+    description = bookingDetails.description;
   } else {
-      totalAmount = (bookingDetails?.fee || 800) + 50;
-      description = bookingDetails.type === 'VIDEO' ? 'Video Consult' : 'OPD Consultation';
+    totalAmount = (bookingDetails?.fee || 800) + 50;
+    description = bookingDetails.type === 'VIDEO' ? 'Video Consult' : 'OPD Consultation';
   }
 
   return (
@@ -1633,13 +1633,13 @@ const SuccessScreen = ({ navigate, bookingDetails, onSetReminder }) => {
   const [reminder, setReminder] = useState(false);
   let msg = "";
   if (bookingDetails?.type === 'LAB') {
-      msg = `Lab Test booking confirmed for ${bookingDetails.date} at ${bookingDetails.slot}.`;
+    msg = `Lab Test booking confirmed for ${bookingDetails.date} at ${bookingDetails.slot}.`;
   } else if (bookingDetails?.type === 'PHARMACY') {
-      msg = `Pharmacy Order placed successfully. Track it from home.`;
+    msg = `Pharmacy Order placed successfully. Track it from home.`;
   } else if (bookingDetails?.type === 'BILL') {
-      msg = `Payment of ₹${bookingDetails.totalAmount} for ${bookingDetails.description} was successful.`;
+    msg = `Payment of ₹${bookingDetails.totalAmount} for ${bookingDetails.description} was successful.`;
   } else {
-      msg = `${bookingDetails?.type === 'VIDEO' ? 'Video Consultation' : 'OPD Appointment'} with ${bookingDetails?.doctor} confirmed for ${bookingDetails?.date} at ${bookingDetails?.time}.`;
+    msg = `${bookingDetails?.type === 'VIDEO' ? 'Video Consultation' : 'OPD Appointment'} with ${bookingDetails?.doctor} confirmed for ${bookingDetails?.date} at ${bookingDetails?.time}.`;
   }
 
   return (
@@ -1648,10 +1648,10 @@ const SuccessScreen = ({ navigate, bookingDetails, onSetReminder }) => {
       <h2 className="text-2xl font-bold mb-2">Success!</h2>
       <p className="text-gray-500 mb-8">{msg}</p>
       {(bookingDetails?.type !== 'PHARMACY' && bookingDetails?.type !== 'BILL') && (
-      <div className="w-full bg-gray-50 p-4 rounded-xl mb-8 flex items-center justify-between">
-        <div className="flex items-center gap-3 text-left"><div className="bg-orange-100 p-2 rounded-lg text-orange-600"><BellRing size={20} /></div><div><p className="font-bold text-sm text-gray-800">Set Reminder</p><p className="text-[10px] text-gray-500">Notify 1 hour before</p></div></div>
-        <div onClick={() => { setReminder(!reminder); onSetReminder(!reminder); }} className={`w-12 h-7 rounded-full flex items-center p-1 cursor-pointer transition-colors ${reminder ? 'bg-green-500' : 'bg-gray-300'}`}><div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${reminder ? 'translate-x-5' : 'translate-x-0'}`}></div></div>
-      </div>
+        <div className="w-full bg-gray-50 p-4 rounded-xl mb-8 flex items-center justify-between">
+          <div className="flex items-center gap-3 text-left"><div className="bg-orange-100 p-2 rounded-lg text-orange-600"><BellRing size={20} /></div><div><p className="font-bold text-sm text-gray-800">Set Reminder</p><p className="text-[10px] text-gray-500">Notify 1 hour before</p></div></div>
+          <div onClick={() => { setReminder(!reminder); onSetReminder(!reminder); }} className={`w-12 h-7 rounded-full flex items-center p-1 cursor-pointer transition-colors ${reminder ? 'bg-green-500' : 'bg-gray-300'}`}><div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${reminder ? 'translate-x-5' : 'translate-x-0'}`}></div></div>
+        </div>
       )}
       <Button onClick={() => navigate('home')} className="w-full">Back to Home</Button>
     </div>
@@ -1670,7 +1670,7 @@ const AppointmentDetailsScreen = ({ navigate, appt, onCancel, onReschedule }) =>
           <p className="text-gray-500">{appt.dept}</p>
           <div className="mt-4 flex flex-col items-center gap-2"><div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-bold"><CheckCircle size={12} /> CONFIRMED</div>{appt.type === 'VIDEO' && <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-xs font-bold"><Video size={12} /> VIDEO CONSULT</div>}</div>
         </div>
-         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-6">
           <div className="flex items-center gap-4"><div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Calendar size={20} /></div><div><p className="text-xs text-gray-500">Date</p><p className="font-bold text-gray-800">{appt.date}</p></div></div>
           <div className="flex items-center gap-4"><div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Clock size={20} /></div><div><p className="text-xs text-gray-500">Time</p><p className="font-bold text-gray-800">{appt.time}</p></div></div>
           <div className="flex items-center gap-4"><div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><MapPin size={20} /></div><div><p className="text-xs text-gray-500">Location</p><p className="font-bold text-gray-800">{appt.type === 'VIDEO' ? 'Online (App)' : 'Sagar Hospital, OPD Block A'}</p></div></div>
@@ -1696,7 +1696,7 @@ const AmbulanceScreen = ({ navigate }) => {
   return (
     <div className="h-full flex flex-col bg-red-50 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1/2 bg-red-600 rounded-b-[3rem] z-0"></div>
-      
+
       <div className="relative z-10 flex flex-col h-full p-6 pt-14">
         <button onClick={() => navigate('home')} className="self-start p-2 bg-white/20 text-white rounded-full mb-8 backdrop-blur-sm">
           <ArrowLeft size={24} />
@@ -1722,47 +1722,47 @@ const AmbulanceScreen = ({ navigate }) => {
           {/* Status Timeline */}
           {status === 'dispatched' && (
             <div className="flex justify-between mb-6 px-2">
-               <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 bg-green-500 rounded-full mb-1"></div>
-                  <span className="text-[10px] font-bold text-gray-600">Requested</span>
-               </div>
-               <div className="h-0.5 bg-green-500 flex-1 mt-2 mx-1"></div>
-               <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 bg-green-500 rounded-full mb-1 animate-pulse"></div>
-                  <span className="text-[10px] font-bold text-gray-600">Dispatched</span>
-               </div>
-               <div className="h-0.5 bg-gray-200 flex-1 mt-2 mx-1"></div>
-               <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 bg-gray-300 rounded-full mb-1"></div>
-                  <span className="text-[10px] font-bold text-gray-400">Arrived</span>
-               </div>
+              <div className="flex flex-col items-center">
+                <div className="w-4 h-4 bg-green-500 rounded-full mb-1"></div>
+                <span className="text-[10px] font-bold text-gray-600">Requested</span>
+              </div>
+              <div className="h-0.5 bg-green-500 flex-1 mt-2 mx-1"></div>
+              <div className="flex flex-col items-center">
+                <div className="w-4 h-4 bg-green-500 rounded-full mb-1 animate-pulse"></div>
+                <span className="text-[10px] font-bold text-gray-600">Dispatched</span>
+              </div>
+              <div className="h-0.5 bg-gray-200 flex-1 mt-2 mx-1"></div>
+              <div className="flex flex-col items-center">
+                <div className="w-4 h-4 bg-gray-300 rounded-full mb-1"></div>
+                <span className="text-[10px] font-bold text-gray-400">Arrived</span>
+              </div>
             </div>
           )}
 
           {/* Map Placeholder */}
           <div className="w-full h-40 bg-gray-100 rounded-2xl mb-6 relative overflow-hidden border border-gray-200 flex items-center justify-center">
-             <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/OpenStreetMap_Standard_Map.png')] bg-cover opacity-30"></div>
-             <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-bold text-gray-600 flex items-center gap-2 border border-gray-200 shadow-sm z-10">
-               <Navigation size={14} className="text-blue-500" /> Future Scope: GPS Live Tracking
-             </div>
-             {/* Marker */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8 text-red-600 drop-shadow-md">
-                <MapPin size={32} fill="currentColor" />
-             </div>
+            <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/OpenStreetMap_Standard_Map.png')] bg-cover opacity-30"></div>
+            <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-bold text-gray-600 flex items-center gap-2 border border-gray-200 shadow-sm z-10">
+              <Navigation size={14} className="text-blue-500" /> Future Scope: GPS Live Tracking
+            </div>
+            {/* Marker */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8 text-red-600 drop-shadow-md">
+              <MapPin size={32} fill="currentColor" />
+            </div>
           </div>
 
           {status === 'dispatched' ? (
             <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 mb-6 flex items-center gap-4">
-               <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                  <UserCheck size={24} className="text-gray-500" />
-               </div>
-               <div className="flex-1">
-                  <h4 className="font-bold text-gray-800">Ramesh K.</h4>
-                  <p className="text-xs text-gray-500">KA-05-AM-108 • Driver</p>
-               </div>
-               <a href="tel:108" className="p-3 bg-green-500 text-white rounded-full shadow-lg shadow-green-200 active:scale-95 transition-transform">
-                  <Phone size={20} />
-               </a>
+              <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                <UserCheck size={24} className="text-gray-500" />
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-gray-800">Ramesh K.</h4>
+                <p className="text-xs text-gray-500">KA-05-AM-108 • Driver</p>
+              </div>
+              <a href="tel:108" className="p-3 bg-green-500 text-white rounded-full shadow-lg shadow-green-200 active:scale-95 transition-transform">
+                <Phone size={20} />
+              </a>
             </div>
           ) : (
             <div className="w-full bg-gray-100 p-4 rounded-xl flex items-center gap-3 mb-6">
@@ -1776,7 +1776,7 @@ const AmbulanceScreen = ({ navigate }) => {
 
           <div className="mt-auto">
             {status === 'idle' ? (
-              <button 
+              <button
                 onClick={handleRequest}
                 className="w-full py-4 bg-red-600 text-white rounded-2xl font-bold text-lg shadow-lg shadow-red-200 active:scale-95 transition-transform flex items-center justify-center gap-3"
               >
@@ -1784,7 +1784,7 @@ const AmbulanceScreen = ({ navigate }) => {
                 REQUEST AMBULANCE
               </button>
             ) : (
-              <button 
+              <button
                 onClick={() => setStatus('idle')}
                 className="w-full py-4 bg-gray-100 text-gray-600 rounded-2xl font-bold text-lg hover:bg-gray-200 active:scale-95 transition-transform flex items-center justify-center gap-3"
               >
@@ -1803,7 +1803,7 @@ const AmbulanceScreen = ({ navigate }) => {
 
 export default function App() {
   const [screen, setScreen] = useState('splash');
-  
+
   // App State
   const [upcomingAppt, setUpcomingAppt] = useState({
     doctor: "Dr. Rajesh Kumar",
@@ -1814,14 +1814,14 @@ export default function App() {
     reminder: false,
     type: 'OPD' // 'OPD' or 'VIDEO'
   });
-  
+
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [tempBooking, setTempBooking] = useState(null);
   const [isRescheduling, setIsRescheduling] = useState(false);
   const [bookingType, setBookingType] = useState('OPD'); // Context for booking flow
   const [selectedConsultation, setSelectedConsultation] = useState(null); // For detail view
   const [mobileNumber, setMobileNumber] = useState(''); // Store entered mobile number
-  
+
   // Billing State (Moved to App state to allow updates)
   const [myBills, setMyBills] = useState(INITIAL_BILLS);
 
@@ -1837,30 +1837,30 @@ export default function App() {
   // Actions
   const handlePaymentSuccess = () => {
     if (tempBooking?.type === 'PHARMACY') {
-        const newOrder = {
-            id: Math.floor(1000 + Math.random() * 9000),
-            items: cart,
-            total: tempBooking.totalAmount,
-            status: 'Out for Delivery',
-            date: 'Today',
-            mode: tempBooking.mode
-        };
-        setPharmacyOrders([newOrder, ...pharmacyOrders]);
-        setCart([]); // Clear Cart
+      const newOrder = {
+        id: Math.floor(1000 + Math.random() * 9000),
+        items: cart,
+        total: tempBooking.totalAmount,
+        status: 'Out for Delivery',
+        date: 'Today',
+        mode: tempBooking.mode
+      };
+      setPharmacyOrders([newOrder, ...pharmacyOrders]);
+      setCart([]); // Clear Cart
     } else if (tempBooking?.type === 'LAB') {
-        setLabCart([]);
+      setLabCart([]);
     } else if (tempBooking?.type === 'BILL') {
-        // Update bill status to Paid
-        const updatedBills = myBills.map(bill => 
-          bill.id === tempBooking.id ? { ...bill, status: 'Paid' } : bill
-        );
-        setMyBills(updatedBills);
+      // Update bill status to Paid
+      const updatedBills = myBills.map(bill =>
+        bill.id === tempBooking.id ? { ...bill, status: 'Paid' } : bill
+      );
+      setMyBills(updatedBills);
     } else {
-        setUpcomingAppt({
-            ...tempBooking,
-            reminder: false
-        });
-        setIsRescheduling(false);
+      setUpcomingAppt({
+        ...tempBooking,
+        reminder: false
+      });
+      setIsRescheduling(false);
     }
     setTempBooking(null);
   };
@@ -1885,89 +1885,89 @@ export default function App() {
 
   // Pharmacy Actions
   const addToCart = (medicine) => {
-      const existing = cart.find(item => item.id === medicine.id);
-      if (existing) {
-          setCart(cart.map(item => item.id === medicine.id ? { ...item, qty: item.qty + 1 } : item));
-      } else {
-          setCart([...cart, { ...medicine, qty: 1 }]);
-      }
+    const existing = cart.find(item => item.id === medicine.id);
+    if (existing) {
+      setCart(cart.map(item => item.id === medicine.id ? { ...item, qty: item.qty + 1 } : item));
+    } else {
+      setCart([...cart, { ...medicine, qty: 1 }]);
+    }
   };
 
   const updateCartQty = (id, change) => {
-      setCart(cart.map(item => {
-          if (item.id === id) return { ...item, qty: Math.max(0, item.qty + change) };
-          return item;
-      }).filter(item => item.qty > 0));
+    setCart(cart.map(item => {
+      if (item.id === id) return { ...item, qty: Math.max(0, item.qty + change) };
+      return item;
+    }).filter(item => item.qty > 0));
   };
 
   const handlePharmacyCheckout = ({ total, mode }) => {
-      setTempBooking({
-          type: 'PHARMACY',
-          totalAmount: total,
-          description: 'Pharmacy Order',
-          mode: mode
-      });
-      navigate('payment');
+    setTempBooking({
+      type: 'PHARMACY',
+      totalAmount: total,
+      description: 'Pharmacy Order',
+      mode: mode
+    });
+    navigate('payment');
   };
 
   // Lab Actions
   const addToLabCart = (test) => {
-      if (!labCart.find(item => item.id === test.id)) {
-          setLabCart([...labCart, test]);
-      }
+    if (!labCart.find(item => item.id === test.id)) {
+      setLabCart([...labCart, test]);
+    }
   };
 
   const removeFromLabCart = (index) => {
-      const newCart = [...labCart];
-      newCart.splice(index, 1);
-      setLabCart(newCart);
+    const newCart = [...labCart];
+    newCart.splice(index, 1);
+    setLabCart(newCart);
   };
 
   const handleLabCheckout = ({ total, slot }) => {
-      setTempBooking({
-          type: 'LAB',
-          totalAmount: total,
-          description: 'Lab Tests Booking',
-          date: 'Tomorrow',
-          slot: slot
-      });
-      navigate('payment');
+    setTempBooking({
+      type: 'LAB',
+      totalAmount: total,
+      description: 'Lab Tests Booking',
+      date: 'Tomorrow',
+      slot: slot
+    });
+    navigate('payment');
   };
 
   const handleBillPayment = (bill) => {
-      setTempBooking({
-          type: 'BILL',
-          totalAmount: bill.amount,
-          description: bill.title,
-          id: bill.id
-      });
-      navigate('payment');
+    setTempBooking({
+      type: 'BILL',
+      totalAmount: bill.amount,
+      description: bill.title,
+      id: bill.id
+    });
+    navigate('payment');
   };
 
   // Consultation Actions
   const handleSelectConsultation = (consultation) => {
-     setSelectedConsultation(consultation);
-     navigate('consultation_detail');
+    setSelectedConsultation(consultation);
+    navigate('consultation_detail');
   };
 
   const handleBookFollowUp = (consultation) => {
-     const doc = DOCTORS.find(d => d.name === consultation.doctor) || DOCTORS[0];
-     setSelectedDoctor(doc);
-     setBookingType('OPD'); // Default to OPD for follow up
-     navigate('booking');
+    const doc = DOCTORS.find(d => d.name === consultation.doctor) || DOCTORS[0];
+    setSelectedDoctor(doc);
+    setBookingType('OPD'); // Default to OPD for follow up
+    navigate('booking');
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-200 flex items-center justify-center p-4 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+    <div className="w-full min-h-screen bg-white flex items-center justify-center p-4 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
       <style>{`.scrollbar-hide::-webkit-scrollbar { display: none; } .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
 
       {/* iPhone 17 Mockup Frame */}
-      <div className="relative w-[380px] h-[800px] bg-black rounded-[55px] shadow-[0_0_0_12px_#3a3a3a,0_0_0_14px_#000,0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-4 ring-gray-900/50">
+      <div className="relative w-[380px] h-[800px] bg-black rounded-[55px] shadow-[0_0_0_12px_#3a3a3a,0_0_0_14px_#000] overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-black rounded-b-[20px] z-50 flex items-center justify-center gap-3">
-            <div className="w-16 h-4 bg-black rounded-full flex items-center justify-center gap-2">
-                <div className="w-2 h-2 bg-[#1a1a1a] rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-[#333] rounded-full"></div>
-            </div>
+          <div className="w-16 h-4 bg-black rounded-full flex items-center justify-center gap-2">
+            <div className="w-2 h-2 bg-[#1a1a1a] rounded-full animate-pulse"></div>
+            <div className="w-1 h-1 bg-[#333] rounded-full"></div>
+          </div>
         </div>
         <div className="absolute top-3 left-8 z-50 text-white text-xs font-medium tracking-wide">12:45</div>
         <div className="absolute top-3 right-8 z-50 flex gap-1.5 items-center">
@@ -1977,15 +1977,15 @@ export default function App() {
 
         {/* Screen Content Area */}
         <div className="w-full h-full bg-white relative overflow-hidden flex flex-col">
-          
+
           {screen === 'splash' && <SplashScreen onFinish={() => setScreen('login')} />}
-          
+
           {screen === 'login' && <LoginScreen navigate={navigate} setMobileNumber={setMobileNumber} />}
-          
+
           {screen === 'otp' && <OtpScreen navigate={navigate} mobileNumber={mobileNumber} />}
 
           {screen === 'home' && <HomeScreen navigate={navigate} upcomingAppt={upcomingAppt} onStartVideoBooking={handleStartVideoBooking} activeOrders={pharmacyOrders} />}
-          
+
           {screen === 'appointments' && <AppointmentsScreen navigate={navigate} upcomingAppt={upcomingAppt} />}
 
           {screen === 'notifications' && <NotificationsScreen navigate={navigate} />}
@@ -1993,11 +1993,11 @@ export default function App() {
           {screen === 'news' && <NewsScreen navigate={navigate} />}
 
           {screen === 'doctors' && <DoctorsScreen navigate={navigate} setSelectedDoctor={setSelectedDoctor} bookingType={bookingType} />}
-          
+
           {screen === 'booking' && (
-            <BookingScreen 
-              navigate={navigate} 
-              doctor={selectedDoctor} 
+            <BookingScreen
+              navigate={navigate}
+              doctor={selectedDoctor}
               onConfirmBooking={setTempBooking}
               isRescheduling={isRescheduling}
               bookingType={bookingType}
@@ -2005,52 +2005,52 @@ export default function App() {
           )}
 
           {screen === 'pharmacy' && (
-              <PharmacyScreen navigate={navigate} cart={cart} onAddToCart={addToCart} />
+            <PharmacyScreen navigate={navigate} cart={cart} onAddToCart={addToCart} />
           )}
 
           {screen === 'pharmacy_cart' && (
-              <PharmacyCartScreen navigate={navigate} cart={cart} onUpdateQty={updateCartQty} onCheckout={handlePharmacyCheckout} />
+            <PharmacyCartScreen navigate={navigate} cart={cart} onUpdateQty={updateCartQty} onCheckout={handlePharmacyCheckout} />
           )}
 
           {screen === 'pharmacy_tracking' && (
-              <PharmacyTrackingScreen navigate={navigate} />
+            <PharmacyTrackingScreen navigate={navigate} />
           )}
 
           {screen === 'lab' && (
-              <LabTestsScreen navigate={navigate} labCart={labCart} onAddToCart={addToLabCart} />
+            <LabTestsScreen navigate={navigate} labCart={labCart} onAddToCart={addToLabCart} />
           )}
 
           {screen === 'lab_cart' && (
-              <LabCartScreen navigate={navigate} cart={labCart} onRemove={removeFromLabCart} onCheckout={handleLabCheckout} />
+            <LabCartScreen navigate={navigate} cart={labCart} onRemove={removeFromLabCart} onCheckout={handleLabCheckout} />
           )}
 
           {screen === 'bills' && (
-              <BillsScreen navigate={navigate} bills={myBills} onPayBill={handleBillPayment} />
+            <BillsScreen navigate={navigate} bills={myBills} onPayBill={handleBillPayment} />
           )}
 
           {screen === 'payment' && (
-            <PaymentScreen 
-              navigate={navigate} 
+            <PaymentScreen
+              navigate={navigate}
               bookingDetails={tempBooking}
               onPaymentSuccess={handlePaymentSuccess}
             />
           )}
 
           {screen === 'success' && (
-            <SuccessScreen 
-              navigate={navigate} 
-              bookingDetails={upcomingAppt} 
-              onSetReminder={(val) => setUpcomingAppt({...upcomingAppt, reminder: val})}
+            <SuccessScreen
+              navigate={navigate}
+              bookingDetails={upcomingAppt}
+              onSetReminder={(val) => setUpcomingAppt({ ...upcomingAppt, reminder: val })}
             />
           )}
-          
+
           {screen === 'appt_details' && (
-             <AppointmentDetailsScreen 
-                navigate={navigate} 
-                appt={upcomingAppt}
-                onCancel={handleCancelAppt}
-                onReschedule={handleStartReschedule}
-             />
+            <AppointmentDetailsScreen
+              navigate={navigate}
+              appt={upcomingAppt}
+              onCancel={handleCancelAppt}
+              onReschedule={handleStartReschedule}
+            />
           )}
 
           {screen === 'video_call' && (
@@ -2060,24 +2060,24 @@ export default function App() {
           {screen === 'post_consult' && (
             <PostConsultationScreen navigate={navigate} />
           )}
-          
+
           {screen === 'records' && (
-             <RecordsScreen 
-                navigate={navigate} 
-                onSelectConsultation={handleSelectConsultation} 
-             />
+            <RecordsScreen
+              navigate={navigate}
+              onSelectConsultation={handleSelectConsultation}
+            />
           )}
 
           {screen === 'consultation_detail' && selectedConsultation && (
-             <ConsultationDetailScreen 
-                navigate={navigate} 
-                consultation={selectedConsultation} 
-                onBookFollowUp={handleBookFollowUp}
-             />
+            <ConsultationDetailScreen
+              navigate={navigate}
+              consultation={selectedConsultation}
+              onBookFollowUp={handleBookFollowUp}
+            />
           )}
 
           {screen === 'ambulance' && <AmbulanceScreen navigate={navigate} />}
-          
+
           {screen === 'profile' && <ProfileScreen navigate={navigate} />}
 
           {/* Bottom Navigation */}
@@ -2091,7 +2091,7 @@ export default function App() {
                 <Calendar size={24} strokeWidth={screen === 'appointments' ? 2.5 : 2} />
                 <span className="text-[10px] font-medium">Appointments</span>
               </div>
-              
+
               <div className="flex justify-center items-start w-full relative">
                 <div onClick={() => setScreen('records')} className="absolute -top-6 w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-xl shadow-blue-200/50 border-4 border-white cursor-pointer active:scale-95 transition-transform">
                   <FileText size={24} />
@@ -2102,8 +2102,8 @@ export default function App() {
                 <CreditCard size={24} strokeWidth={screen === 'bills' ? 2.5 : 2} />
                 <span className="text-[10px] font-medium">Pay</span>
               </div>
-              <div 
-                onClick={() => setScreen('profile')} 
+              <div
+                onClick={() => setScreen('profile')}
                 className={`flex flex-col items-center justify-end gap-1 cursor-pointer ${screen === 'profile' ? 'text-blue-600' : 'text-gray-400'}`}
               >
                 <User size={24} strokeWidth={screen === 'profile' ? 2.5 : 2} />
